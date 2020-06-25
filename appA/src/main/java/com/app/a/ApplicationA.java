@@ -1,10 +1,10 @@
-package com.app.b;
+package com.app.a;
 
 import io.micronaut.runtime.Micronaut;
 
-public class Application {
+public class ApplicationA {
 
     public static void main(String[] args) {
-        Micronaut.run(Application.class);
+        Micronaut.run(ApplicationA.class);
     }
 }

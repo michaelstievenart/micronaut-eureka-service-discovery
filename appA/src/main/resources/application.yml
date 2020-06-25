@@ -1,18 +1,42 @@
 micronaut:
+  server:
+    port: 9049
+    cors:
+      enabled: true
   application:
     name: appA
+  http:
+    services:
+      uaa:
   security:
-    authentication: bearer
+    oauth2:
+      clients:
+        uaa:
+          grant-type: password
+          token:
+            auth-method: client_secret_basic
+            url: /oauth/token
+          scopes:
+            - openid
+          client-id: web_app
+          client-secret: changeit
+          authorization:
+            url: /oauth/authorize
     token:
       jwt:
-        signatures:
-          secret:
-            generator:
-              secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}"'
-        cookie:
-          enabled: true
+      propagation:
+        enabled: true
+        service-id-regex: eureka
+    intercept-url-map:
+      - pattern: /api/*
+        access:
+          - isAuthenticated()
+
 eureka:
   client:
     registration:
       enabled: true
-    defaultZone: ${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}
+    defaultZone: http://localhost:8761
+    discovery:
+      enabled: true
+    host: localhost

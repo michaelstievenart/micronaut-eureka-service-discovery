@@ -1,16 +1,40 @@
 micronaut:
+  server:
+    port: 9050
+    cors:
+      enabled: true
   application:
     name: appB
+  http:
+    services:
+      uaa:
   security:
-    authentication: bearer
+    intercept-url-map:
+      - pattern: /api/*
+        access:
+          - isAuthenticated()
+    oauth2:
+      clients:
+        uaa:
+          grant-type: password
+          token:
+            auth-method: client_secret_basic
+            url: /oauth/token
+          scopes:
+            - openid
+          client-id: web_app
+          client-secret: changeit
     token:
       jwt:
-        signatures:
-          secret:
-            generator:
-              secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}"'
         cookie:
           enabled: true
+      propagation:
+        enabled: true
+        service-id-regex: eureka
+    intercept-url-map:
+      - pattern: /api/*
+        access:
+          - isAuthenticated()
 eureka:
   client:
     registration:
