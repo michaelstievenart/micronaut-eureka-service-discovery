@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.app.b
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [annotation-api, app-name, discovery-eureka, docker, file-watch, http-client, java, java-application, junit, logback, maven, netty-server, readme, security-annotations, security-jwt, security-oauth2, shade, yaml]
