@@ -26,7 +26,7 @@ micronaut:
       jwt:
       propagation:
         enabled: true
-        service-id-regex: eureka
+        service-id-regex: .*
     intercept-url-map:
       - pattern: /api/*
         access:
