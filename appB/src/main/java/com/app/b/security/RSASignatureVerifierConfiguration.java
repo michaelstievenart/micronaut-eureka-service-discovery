@@ -1,5 +1,7 @@
 package com.app.b.security;
 
+import javax.inject.Named;
+
 import java.security.interfaces.RSAPublicKey;
 import java.util.Map;
 
@@ -16,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import static com.app.b.config.ClientConfiguration.UAA_SERVICE;
 
 @Context
+@Named(UAA_SERVICE)
 public class RSASignatureVerifierConfiguration implements RSASignatureConfiguration {
 
     private static final Logger LOG = LoggerFactory.getLogger(RSASignatureVerifierConfiguration.class);

@@ -1,12 +1,12 @@
 package com.app.a.security;
 
 import javax.inject.Named;
-import javax.inject.Singleton;
 
 import java.security.interfaces.RSAPublicKey;
 import java.util.Map;
 
 import io.micronaut.context.BeanContext;
+import io.micronaut.context.annotation.Context;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.client.RxHttpClient;
@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 
 import static com.app.a.config.ClientConfiguration.UAA_SERVICE;
 
-@Singleton
+@Context
 @Named(UAA_SERVICE)
 public class RSASignatureVerifierConfiguration implements RSASignatureConfiguration {
 
