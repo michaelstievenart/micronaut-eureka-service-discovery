@@ -24,7 +24,7 @@
         <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
 
         <lombok.version>1.18.0</lombok.version>
-        <bouncy.castle.version>1.65.01</bouncy.castle.version>
+        <bouncy.castle.version>1.67</bouncy.castle.version>
     </properties>
 
     <repositories>
